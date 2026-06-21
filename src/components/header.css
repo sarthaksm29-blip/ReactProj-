@@ -1,0 +1,92 @@
+/* Header — H&M minimal nav */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  height: 60px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header__logo {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* Cart button */
+.header__cart {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  border-radius: 0;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+
+.header__cart:hover {
+  background: var(--ink);
+  color: var(--accent-inv);
+  border-color: var(--ink);
+}
+
+/* Item count badge */
+.header__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  background: var(--ink);
+  color: var(--accent-inv);
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 50%;
+  transition: transform 0.2s var(--ease);
+}
+
+.header__cart:hover .header__badge {
+  background: var(--accent-inv);
+  color: var(--ink);
+}
+
+/* Mobile filter toggle */
+.header__filter-btn {
+  display: none;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: none;
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.75rem;
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.header__filter-btn:hover { background: var(--ink); color: var(--accent-inv); }
+
+@media (max-width: 768px) {
+  .header__filter-btn { display: flex; }
+}
+
+@media (max-width: 480px) {
+  .header__logo { font-size: 0.92rem; letter-spacing: 0.05em; }
+}

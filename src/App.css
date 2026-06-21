@@ -1,0 +1,7 @@
+/* App-level layout wrapper — all component styles live in their own CSS files */
+
+#app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

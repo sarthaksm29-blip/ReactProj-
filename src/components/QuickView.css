@@ -1,0 +1,194 @@
+/* QuickView Modal — H&M-style product panel */
+
+/* Backdrop */
+.quickview-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 300;
+  animation: qv-fade 0.18s var(--ease);
+}
+
+@keyframes qv-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal box */
+.quickview {
+  background: var(--bg);
+  width: 100%;
+  max-width: 800px;
+  max-height: 92vh;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  border: none;
+  box-shadow: var(--shadow-lg);
+  animation: qv-rise 0.22s var(--ease);
+}
+
+@keyframes qv-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .quickview {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Close button */
+.quickview__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 1;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--ink);
+  border-radius: 0;
+  transition: transform 0.18s var(--ease), background 0.18s var(--ease);
+}
+
+.quickview__close:hover {
+  transform: rotate(90deg);
+  background: var(--bg-secondary);
+}
+
+/* Left: product image */
+.quickview__image {
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.quickview__image img {
+  width: 100%;
+  height: 100%;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+/* Right: product details */
+.quickview__body {
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quickview__category {
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.quickview__title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-top: 0.1rem;
+}
+
+.quickview__description {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin-top: 0.25rem;
+}
+
+/* Option pickers */
+.quickview__options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.quickview__option-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  margin-bottom: 0.4rem;
+}
+
+.quickview__swatches,
+.quickview__sizes {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+/* Footer: price + add */
+.quickview__footer {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.quickview__pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.quickview__price {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.quickview__member-price {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.quickview__member-price strong {
+  color: #d40000;
+  font-weight: 600;
+}
+
+.quickview__add {
+  flex: 1;
+  background: var(--ink);
+  color: var(--accent-inv);
+  border: none;
+  padding: 0.85rem 1.25rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 0;
+  cursor: pointer;
+  transition: opacity 0.18s var(--ease);
+}
+
+.quickview__add:hover {
+  opacity: 0.85;
+}

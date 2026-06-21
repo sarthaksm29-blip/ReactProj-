@@ -1,0 +1,215 @@
+/* Filter Sidebar — minimal H&M style */
+
+/* ── Mobile backdrop ── */
+.filter-sidebar__backdrop {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .filter-sidebar__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 149;
+  }
+}
+
+/* ── Sidebar panel ── */
+.filter-sidebar {
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  padding: 1.5rem 1.25rem 1rem;
+  height: 100%;
+  min-height: calc(100vh - 60px);
+  position: sticky;
+  top: 60px;
+  overflow-y: auto;
+}
+
+/* Mobile: hidden by default, shown as overlay */
+@media (max-width: 768px) {
+  .filter-sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: min(300px, 85vw);
+    height: 100vh;
+    min-height: 100vh;
+    z-index: 150;
+    border-right: 1px solid var(--border);
+    padding-top: 1.5rem;
+    overflow-y: auto;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.12);
+    animation: sidebar-slide-in 0.25s var(--ease);
+  }
+
+  .filter-sidebar--open {
+    display: block;
+  }
+}
+
+@keyframes sidebar-slide-in {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+/* ── Heading row ── */
+.filter-sidebar__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.filter-sidebar__title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Active filter count pill */
+.filter-sidebar__active-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  background: var(--ink);
+  color: var(--accent-inv);
+  font-size: 0.6rem;
+  font-weight: 700;
+  border-radius: 50%;
+}
+
+.filter-sidebar__head-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-sidebar__clear {
+  font-size: 0.68rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color var(--dur) var(--ease);
+}
+.filter-sidebar__clear:hover { color: var(--ink); }
+
+/* Mobile close button */
+.filter-sidebar__close-btn {
+  display: none;
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+}
+.filter-sidebar__close-btn:hover { color: var(--ink); }
+
+@media (max-width: 768px) {
+  .filter-sidebar__close-btn { display: block; }
+}
+
+/* ── Filter groups ── */
+.filter-sidebar__group {
+  border: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.filter-sidebar__group + .filter-sidebar__group {
+  border-top: 1px solid var(--border);
+}
+
+.filter-sidebar__group legend {
+  width: 100%;
+  padding: 1rem 0 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ink);
+}
+
+/* Option rows */
+.filter-sidebar__option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--ink-soft);
+  padding: 0.35rem 0.25rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-transform: capitalize;
+  transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.filter-sidebar__option:hover { color: var(--ink); background: var(--bg-secondary); }
+
+.filter-sidebar__option input[type='checkbox'] {
+  width: 14px;
+  height: 14px;
+  accent-color: var(--ink);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Price range slider */
+.filter-sidebar__group input[type='range'] {
+  width: 100%;
+  accent-color: var(--ink);
+  cursor: pointer;
+  height: 2px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.filter-sidebar__range-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+
+/* Mobile "Show Results" button */
+.filter-sidebar__apply-btn {
+  display: none;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.85rem;
+  background: var(--ink);
+  color: var(--accent-inv);
+  border: none;
+  font-family: var(--font);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.filter-sidebar__apply-btn:hover { opacity: 0.85; }
+
+@media (max-width: 768px) {
+  .filter-sidebar__apply-btn { display: block; }
+}
